@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'id_user';
 
-    protected $table = 'users';
+    protected $table = 't_users';
 
     protected $guarded = ['id_user'];
 

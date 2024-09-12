@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Barang,Pegawai};
+use App\Models\{User};
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $barang = Barang::count();
-        $pegawai = Pegawai::count();
-
+        $user = User::count();
         return view('dashboard.dashboard', [
-            'barang' => $barang,
-            'pegawai' => $pegawai,
+            'user' => $user,
         ]);
     }
 }

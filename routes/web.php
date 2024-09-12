@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController,StartController,DashboardController,BarangController, PegawaiController};
+use App\Http\Controllers\{AuthController, StartController, DashboardController, UserController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,21 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// route login
-// Route::get('/', [StartController::class, 'index']);
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'process']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
-
-// route dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
-
-// route barang
-Route::resource('/barang', BarangController::class)->middleware('auth');
-Route::get('/print', [BarangController::class, 'printBarang'])->middleware('auth');
-
-// route pegawai
-Route::resource('/pegawai', PegawaiController::class)->middleware('auth');
+Route::resource('/user', UserController::class)->middleware('auth');

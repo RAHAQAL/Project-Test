@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Barang,Pegawai};
+use App\Models\{User};
 use Illuminate\Http\Request;
 
 class StartController extends Controller
 {
     public function index(Request $request)
     {
-        $barang = Barang::all();
-        // $pegawai = Pegawai::all();
+        $user = User::all();
 
         return view('start', [
-            'barang' => $barang
-            // 'pegawai' => $pegawai
+            'user' => $user
         ]);
     }
 }
